@@ -1,0 +1,210 @@
+<title>MRF Tyres T&S - Super Tyres — Leave a Review</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+  :root {
+    --bg: #241209;
+    --bg-grain: #2c160b;
+    --surface: #33200f;
+    --text: #f6ead6;
+    --text-muted: #b99a78;
+    --accent: #d8442f;
+    --accent-strong: #f05a3f;
+    --gold: #cf9a2e;
+    --border: #4d3319;
+    --shadow: rgba(0,0,0,0.35);
+  }
+
+  :root[data-theme="light"] {
+    --bg: #fbe9e2;
+    --bg-grain: #f7ded4;
+    --surface: #fffaf6;
+    --text: #2b160b;
+    --text-muted: #8a5a3a;
+    --accent: #c23b28;
+    --accent-strong: #a9301f;
+    --gold: #a97418;
+    --border: #ecd3c3;
+    --shadow: rgba(90,50,20,0.15);
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #fbe9e2;
+      --bg-grain: #f7ded4;
+      --surface: #fffaf6;
+      --text: #2b160b;
+      --text-muted: #8a5a3a;
+      --accent: #c23b28;
+      --accent-strong: #a9301f;
+      --gold: #a97418;
+      --border: #ecd3c3;
+      --shadow: rgba(90,50,20,0.15);
+    }
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background:
+      radial-gradient(circle at 1px 1px, var(--bg-grain) 1px, transparent 0) 0 0/22px 22px,
+      var(--bg);
+    color: var(--text);
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    padding: 40px 16px 64px;
+    line-height: 1.5;
+  }
+
+  .card { width: 100%; max-width: 420px; display: flex; flex-direction: column; gap: 22px; }
+
+  .eyebrow {
+    text-transform: uppercase; letter-spacing: 0.14em; font-size: 11px;
+    font-weight: 600; color: var(--gold); text-align: center;
+  }
+
+  h1 {
+    font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+    font-weight: 700; font-size: clamp(26px, 7vw, 32px);
+    text-align: center; margin: 0; text-wrap: balance;
+  }
+
+  .stars { text-align: center; font-size: 22px; color: var(--gold); letter-spacing: 4px; }
+
+  .lede {
+    text-align: center; color: var(--text-muted); font-size: 14.5px;
+    max-width: 34ch; margin: 0 auto; text-wrap: balance;
+  }
+
+  .tags { display: flex; flex-direction: column; gap: 14px; margin-top: 4px; }
+
+  .tag {
+    position: relative; background: var(--surface); border: 1px solid var(--border);
+    border-top: none; border-radius: 4px; padding: 18px 16px 16px;
+    display: flex; align-items: center; gap: 14px;
+  }
+
+  .tag::before {
+    content: ""; position: absolute; top: 0; left: 10px; right: 10px;
+    height: 0; border-top: 2px dashed var(--border);
+  }
+
+  .tag-text { flex: 1; font-size: 15px; color: var(--text); }
+
+  .copy-btn {
+    flex-shrink: 0; appearance: none; border: 1px solid var(--gold); background: transparent;
+    color: var(--gold); font-size: 12px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.06em; padding: 8px 12px; border-radius: 3px; cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease, transform 0.1s ease;
+    min-width: 68px;
+  }
+
+  .copy-btn:hover { background: var(--gold); color: var(--bg); }
+  .copy-btn:active { transform: scale(0.96); }
+  .copy-btn:focus-visible { outline: 2px solid var(--accent-strong); outline-offset: 2px; }
+
+  .hint { text-align: center; font-size: 12.5px; color: var(--text-muted); margin-top: -6px; }
+
+  .cta {
+    display: block; text-align: center; text-decoration: none; background: var(--accent);
+    color: #fff8f3; font-size: 16px; font-weight: 700; padding: 16px 20px; border-radius: 6px;
+    box-shadow: 0 6px 16px var(--shadow); transition: background-color 0.15s ease, transform 0.1s ease;
+  }
+
+  .cta:hover { background: var(--accent-strong); }
+  .cta:active { transform: scale(0.98); }
+  .cta:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+  .footer-note { text-align: center; font-size: 11.5px; color: var(--text-muted); opacity: 0.8; }
+
+  .toast {
+    position: fixed; left: 50%; bottom: 28px; transform: translateX(-50%) translateY(12px);
+    background: var(--gold); color: var(--bg); font-size: 13px; font-weight: 700;
+    padding: 10px 18px; border-radius: 999px; opacity: 0; pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease; white-space: nowrap;
+  }
+
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .copy-btn, .cta, .toast { transition: none; }
+  }
+</style>
+
+<div class="card">
+  <div class="eyebrow">MRF Tyres T&S - Super Tyres</div>
+  <h1>Loved it? Tell the world in one tap.</h1>
+  <div class="stars" aria-hidden="true">★★★★★</div>
+  <p class="lede">Pick a line below, copy it, then paste it into your Google review — tweak a word or two to make it yours.</p>
+
+  <div class="tags">
+    <div class="tag">
+      <span class="tag-text">Quick service and fair prices — got my tyres sorted in no time.</span>
+      <button class="copy-btn" data-text="Quick service and fair prices — got my tyres sorted in no time.">Copy</button>
+    </div>
+    <div class="tag">
+      <span class="tag-text">Knowledgeable staff, helped me pick the right tyres for my car.</span>
+      <button class="copy-btn" data-text="Knowledgeable staff, helped me pick the right tyres for my car.">Copy</button>
+    </div>
+    <div class="tag">
+      <span class="tag-text">Honest advice, didn't try to upsell me on anything I didn't need.</span>
+      <button class="copy-btn" data-text="Honest advice, didn't try to upsell me on anything I didn't need.">Copy</button>
+    </div>
+    <div class="tag">
+      <span class="tag-text">Clean, well-organized shop and friendly service all around.</span>
+      <button class="copy-btn" data-text="Clean, well-organized shop and friendly service all around.">Copy</button>
+    </div>
+  </div>
+
+  <p class="hint">Copied text stays on your clipboard — on the next screen, tap the stars near the top to start your review, then paste.</p>
+
+  <a class="cta" href="https://www.google.com/maps?cid=12769718328680583276" target="_blank" rel="noopener">Open on Google Maps →</a>
+
+  <p class="footer-note">Thank you for the support.</p>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite">Copied!</div>
+
+<script>
+  var toast = document.getElementById('toast');
+  var toastTimer = null;
+
+  function showToast(msg) {
+    toast.textContent = msg;
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toast.classList.remove('show'); }, 1600);
+  }
+
+  function fallbackCopy(text) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.focus();
+    ta.select();
+    try { document.execCommand('copy'); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+
+  document.querySelectorAll('.copy-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var text = btn.getAttribute('data-text');
+      var done = function () {
+        var original = btn.textContent;
+        btn.textContent = 'Copied';
+        showToast('Copied — now paste it on Google');
+        setTimeout(function () { btn.textContent = original; }, 1400);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, function () { fallbackCopy(text); done(); });
+      } else {
+        fallbackCopy(text);
+        done();
+      }
+    });
+  });
+</script>
